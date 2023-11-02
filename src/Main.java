@@ -1,17 +1,31 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        // Kreirajte Scanner objekt za unos korisnika
+        Scanner scanner = new Scanner(System.in);
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        // Zatražite korisnika da unese broj "n"
+        System.out.print("Unesite broj n: ");
+        int n = scanner.nextInt();
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        // Iterirajte kroz brojeve od 1 do n
+        for (int i = 1; i <= n; i++) {
+            if (i % sumOfDigits(i) == 0) {
+                System.out.println(i);
+            }
         }
+
+        // Zatvorite Scanner
+        scanner.close();
+    }
+    // Metoda za računanje sume cifara broja
+    public static int sumOfDigits(int number) {
+        int sum = 0;
+        while (number != 0) {
+            sum += number % 10;
+            number /= 10;
+        }
+        return sum;
     }
 }
