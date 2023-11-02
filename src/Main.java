@@ -1,17 +1,37 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        if (args.length != 1) {
+            System.out.println("Molimo unesite jedan broj kao argument.");
+            return;
         }
+
+        try {
+            double number = Double.parseDouble(args[0]);
+            double sinusValue = Math.sin(number);
+            long factorialValue = calculateFactorial((int) number);
+
+            System.out.println("Sinus(" + number + ") = " + sinusValue);
+            System.out.println(number + "! = " + factorialValue);
+        } catch (NumberFormatException e) {
+            System.out.println("Nevažeći unos. Molimo unesite broj.");
+        }
+    }
+
+    private static long calculateFactorial(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Faktorijel nije definiran za negativne brojeve.");
+        }
+
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+
+        long result = 1;
+        for (int i = 2; i <= n; i++) {
+            result *= i;
+        }
+
+        return result;
     }
 }
