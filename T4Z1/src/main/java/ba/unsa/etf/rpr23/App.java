@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package ba.unsa.etf.rpr23;
 
 /**
  * Hello world!
